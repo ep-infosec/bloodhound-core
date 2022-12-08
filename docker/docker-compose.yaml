@@ -1,0 +1,17 @@
+version: "3.0"
+services:
+  db:
+    container_name: db
+    build: ./db
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=bloodhound
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+
+  selenium-firefox:
+    container_name: selenium-firefox
+    image: docker.io/selenium/standalone-firefox
+    privileged: true
+    network_mode: host
